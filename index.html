@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#ffd6e7">
+<title>Um pedacinho do meu amor ❤️</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="bg-hearts" aria-hidden="true"></div>
+
+<main id="app">
+
+  <!-- ===================== MENU PRINCIPAL ===================== -->
+  <section id="menu" class="screen active">
+    <div class="menu-scroll">
+      <header class="hero">
+        <h1 id="title" aria-label="Um pedacinho do meu amor ❤️"></h1>
+        <canvas id="coupleCv" width="280" height="190" aria-label="Isa e Manu, em pixel art"></canvas>
+        <p class="sub">Uma coleção de joguinhos feitos com carinho para a Isa 💕</p>
+        <div class="progress">
+          <span id="progressHearts"><i class="ph">♥</i><i class="ph">♥</i><i class="ph">♥</i></span>
+          <b id="progressText">0/3 jogos concluídos</b>
+        </div>
+      </header>
+
+      <div class="cards">
+        <article class="card" data-game="g1">
+          <div class="badge"></div>
+          <canvas class="art" width="240" height="130" data-art="1"></canvas>
+          <div class="card-body">
+            <h3>Amor Infinito 💗</h3>
+            <p>Colete corações sem parar, do pôr do sol até o universo. Não tem derrota, só amor.</p>
+            <div class="row"><span class="rec" id="rec1"></span><button class="btn primary" data-play="g1">Jogar ▶</button></div>
+          </div>
+        </article>
+
+        <article class="card" data-game="g2">
+          <div class="badge"></div>
+          <canvas class="art" width="240" height="130" data-art="2"></canvas>
+          <div class="card-body">
+            <h3>Máquina de Presentes 🎁</h3>
+            <p>Use a garra para pegar pelúcias e descubra elogios, lembranças e segredos.</p>
+            <div class="row"><span class="rec" id="rec2"></span><button class="btn primary" data-play="g2">Jogar ▶</button></div>
+          </div>
+        </article>
+
+        <article class="card" data-game="g3">
+          <div class="badge"></div>
+          <canvas class="art" width="240" height="130" data-art="3"></canvas>
+          <div class="card-body">
+            <h3>Resgate do Manu 🦍</h3>
+            <p>Isa contra o Barão Bananão! Suba, pule barris e salve o Manu no topo.</p>
+            <div class="row"><span class="rec" id="rec3"></span><button class="btn primary" data-play="g3">Jogar ▶</button></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="final-card locked" id="finalCard">
+        <div class="lock">🔒</div>
+        <div>
+          <b>Surpresa final</b>
+          <p id="finalHint">Conclua os 3 jogos para liberar a surpresa final.</p>
+        </div>
+        <button class="btn primary" id="finalBtn" disabled>Abrir 💌</button>
+      </div>
+
+      <footer class="menu-foot">
+        <button class="link" id="resetAll">apagar progresso salvo</button>
+      </footer>
+    </div>
+    <button class="ibtn floating" data-act="sound" aria-label="Som">🔊</button>
+  </section>
+
+  <!-- ===================== JOGO 1 ===================== -->
+  <section id="game1" class="screen game-screen">
+    <header class="topbar">
+      <button class="ibtn" data-act="menu">⬅ Menu</button>
+      <h2>Amor Infinito 💗</h2>
+      <div class="tools">
+        <button class="ibtn" data-act="pause" aria-label="Pausar">⏸</button>
+        <button class="ibtn" data-act="restart" aria-label="Reiniciar">🔄</button>
+        <button class="ibtn" data-act="sound" aria-label="Som">🔊</button>
+      </div>
+    </header>
+    <div class="game-body">
+      <div class="stage" id="stage1"><canvas id="cv1" class="game-canvas" width="480" height="640"></canvas></div>
+    </div>
+    <div class="touch" id="touch1">
+      <button class="tbtn" data-k="left" aria-label="Esquerda">◀</button>
+      <button class="tbtn" data-k="right" aria-label="Direita">▶</button>
+    </div>
+  </section>
+
+  <!-- ===================== JOGO 2 ===================== -->
+  <section id="game2" class="screen game-screen">
+    <header class="topbar">
+      <button class="ibtn" data-act="menu">⬅ Menu</button>
+      <h2>Máquina de Presentes 🎁</h2>
+      <div class="tools">
+        <button class="ibtn" data-act="pause" aria-label="Pausar">⏸</button>
+        <button class="ibtn" data-act="restart" aria-label="Reiniciar máquina">🔄</button>
+        <button class="ibtn" data-act="sound" aria-label="Som">🔊</button>
+      </div>
+    </header>
+    <div class="game-body">
+      <div class="stage" id="stage2"><canvas id="cv2" class="game-canvas smooth" width="480" height="640"></canvas></div>
+      <aside class="side" id="side2">
+        <h3>Minha coleção <span id="collCount">0/8</span></h3>
+        <div id="collection" class="coll-grid"></div>
+        <button class="link" id="resetColl">recomeçar coleção</button>
+      </aside>
+    </div>
+    <div class="touch" id="touch2">
+      <button class="tbtn" data-k="left" aria-label="Esquerda">◀</button>
+      <button class="tbtn big" data-k="drop" aria-label="Pegar">⬇ PEGAR</button>
+      <button class="tbtn" data-k="right" aria-label="Direita">▶</button>
+    </div>
+  </section>
+
+  <!-- ===================== JOGO 3 ===================== -->
+  <section id="game3" class="screen game-screen">
+    <header class="topbar">
+      <button class="ibtn" data-act="menu">⬅ Menu</button>
+      <h2>Resgate do Manu 🦍</h2>
+      <div class="tools">
+        <button class="ibtn" data-act="pause" aria-label="Pausar">⏸</button>
+        <button class="ibtn" data-act="restart" aria-label="Reiniciar">🔄</button>
+        <button class="ibtn" data-act="sound" aria-label="Som">🔊</button>
+      </div>
+    </header>
+    <div class="game-body">
+      <div class="stage" id="stage3"><canvas id="cv3" class="game-canvas" width="480" height="640"></canvas></div>
+    </div>
+    <div class="touch touch3" id="touch3">
+      <div class="grp">
+        <button class="tbtn" data-k="left" aria-label="Esquerda">◀</button>
+        <button class="tbtn" data-k="right" aria-label="Direita">▶</button>
+      </div>
+      <div class="grp">
+        <button class="tbtn" data-k="up" aria-label="Subir">▲</button>
+        <button class="tbtn" data-k="down" aria-label="Descer">▼</button>
+      </div>
+      <div class="grp">
+        <button class="tbtn big" data-k="jump" aria-label="Pular">PULAR</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SURPRESA FINAL ===================== -->
+  <section id="final" class="screen">
+    <div class="final-wrap">
+      <canvas id="finalCv" width="360" height="300" aria-label="Isa e Manu juntos"></canvas>
+      <h2 id="finalTitle">Para a Isa ❤️</h2>
+      <p id="finalText" class="final-text"></p>
+      <div class="row center">
+        <button class="btn primary" id="finalBack">Voltar ao menu</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/main.js"></script>
+<script src="js/game1.js"></script>
+<script src="js/game2.js"></script>
+<script src="js/game3.js"></script>
+</body>
+</html>
